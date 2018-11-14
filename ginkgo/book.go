@@ -6,11 +6,18 @@ type Book struct {
 	Pages  uint
 }
 
-func (book Book) CategoryByLength() string {
+type BookType string
+
+const (
+	Novel      BookType = "NOVEL"
+	ShortStory BookType = "SHORT STORY"
+)
+
+func (book Book) CategoryByLength() BookType {
 	switch p := book.Pages; {
 	case p > 300:
-		return "NOVEL"
+		return Novel
 	default:
-		return "SHORT STORY"
+		return ShortStory
 	}
 }
