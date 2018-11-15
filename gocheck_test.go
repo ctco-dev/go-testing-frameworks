@@ -45,13 +45,27 @@ func (s *MySuite) TearDownTest(c *C) {
 func (s *MySuite) TestSum_GC_Check(c *C) {
 	sum := Sum(1, 2)
 	c.Check(sum, Equals, uint(2))
-	c.Check(sum, Equals, uint(4))
+	fmt.Println("Printed after a failed check.")
 }
 
 func (s *MySuite) TestSum_GC_Assert(c *C) {
 	sum := Sum(1, 2)
 	c.Assert(sum, Equals, uint(2))
-	c.Assert(sum, Equals, uint(4))
+	fmt.Println("This will not be printed after a failed assert.")
+}
+
+func (s *MySuite) TestDivide_GC_Error(c *C) {
+	_, err := Divide(1, 0)
+	c.Check(err, ErrorMatches, `Division.*`)
+}
+
+func (s *MySuite) TestDivide_GC_Panic(c *C) {
+	c.Check(func (){DivideUnsafe(1, 0)}, PanicMatches, `runtime error.*`)
+}
+
+func (s *MySuite) TestDivide_GC_NotNil(c *C) {
+	a := struct{}{}
+	c.Check(a, Not(IsNil))
 }
 
 func (s *MySuite) BenchmarkSum_GC(c *C) {
