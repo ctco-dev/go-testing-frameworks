@@ -6,7 +6,6 @@ import (
 	. "go-testing-frameworks/ginkgo"
 )
 
-// $ ginkgo generate book
 var _ = Describe("Book", func() {
 	var (
 		longBook  Book

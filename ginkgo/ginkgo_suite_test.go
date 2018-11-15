@@ -7,7 +7,6 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-// $ ginkgo bootstrap
 func TestGinkgo(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Ginkgo Suite")
