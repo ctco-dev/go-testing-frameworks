@@ -15,7 +15,7 @@ const (
 
 func (book Book) CategoryByLength() BookType {
 	switch p := book.Pages; {
-	case p > 300:
+	case p > 20:
 		return Novel
 	default:
 		return ShortStory
