@@ -1,12 +1,14 @@
 package fakes
 
-type reader interface {
+//Reader reads strings from some source
+type Reader interface {
 	Read() string
 }
 
 type myReader struct{}
 
-func NewMyReader() myReader {
+//NewReader creates a new Reader
+func NewReader() Reader {
 	return myReader{}
 }
 

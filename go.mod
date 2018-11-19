@@ -1,4 +1,4 @@
-module home/tests
+module github.com/ctco-dev/go-testing-frameworks
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
