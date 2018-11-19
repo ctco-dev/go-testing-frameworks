@@ -26,4 +26,9 @@ func TestSomething(t *testing.T) {
 		//it seems that uint's are printed in hex format (see https://github.com/stretchr/testify/issues/400)
 		assert.Equal(sample.c, Sum(sample.a, sample.b), description)
 	}
+
+	//Example without implicit test description. It's hard to tell which sample failed.
+	for _, sample := range cases {
+		assert.Equal(sample.c, Sum(sample.a, sample.b))
+	}
 }
