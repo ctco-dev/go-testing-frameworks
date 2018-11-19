@@ -31,4 +31,12 @@ func TestSomething(t *testing.T) {
 	for _, sample := range cases {
 		assert.Equal(sample.c, Sum(sample.a, sample.b))
 	}
+
+	//Zero benefits in running subtests. Description is not displayed in the output.
+	for _, sample := range cases {
+		description := fmt.Sprintf("Sum(%v,%v)", sample.a, sample.b)
+		t.Run(description, func(t *testing.T) {
+			assert.Equal(sample.c, Sum(sample.a, sample.b))
+		})
+	}
 }
