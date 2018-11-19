@@ -1,19 +1,20 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	. "gopkg.in/check.v1"
 	"testing"
-	"flag"
 )
 
 // Hook up gocheck into the "go test" runner.
 func Test(t *testing.T) { TestingT(t) }
 
-type MySuite struct{
+type MySuite struct {
 	n1 int
 	n2 int
 }
+
 var _ = Suite(&MySuite{})
 
 var gocheck = flag.Bool("gocheck", false, "Include gocheck tests")
@@ -41,7 +42,6 @@ func (s *MySuite) TearDownTest(c *C) {
 	fmt.Println("Tear down test")
 }
 
-
 func (s *MySuite) TestSum_GC_Check(c *C) {
 	sum := Sum(1, 2)
 	c.Check(sum, Equals, uint(2))
@@ -60,7 +60,7 @@ func (s *MySuite) TestDivide_GC_Error(c *C) {
 }
 
 func (s *MySuite) TestDivide_GC_Panic(c *C) {
-	c.Check(func (){DivideUnsafe(1, 0)}, PanicMatches, `runtime error.*`)
+	c.Check(func() { DivideUnsafe(1, 0) }, PanicMatches, `runtime error.*`)
 }
 
 func (s *MySuite) TestDivide_GC_NotNil(c *C) {

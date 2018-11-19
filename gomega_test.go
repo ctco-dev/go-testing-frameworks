@@ -10,9 +10,8 @@ import (
 func TestFarmHasCow(t *testing.T) {
 	g := NewGomegaWithT(t)
 
-	g.Expect(Sum(1,2)).Should(Equal(uint(30)))
-	
-	//won't be called
-	g.Expect(Sum(1,2)).Should(Equal(uint(29)))
-}
+	g.Expect(Sum(1, 2)).Should(Equal(uint(30)))
 
+	//won't be called
+	g.Expect(Sum(1, 2)).Should(Equal(uint(29)))
+}
